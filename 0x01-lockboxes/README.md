@@ -1,0 +1,1 @@
+In this project I solve the lockbox problem. The project involves finding out if there are keys available to unlock the boxes and thereby unlock the boxes. If there are no keys available to unlock any box, there is a false return value, else true is returned.
