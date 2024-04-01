@@ -37,14 +37,16 @@ try:
         if len(parsedLine) > 2:
             counter += 1
 
-            totalFileSize += int(parsedLine[-1])
-            statusCode = parsedLine[-2]
+            if counter <= 10:
+                totalFileSize += int(parsedLine[-1])
+                statusCode = parsedLine[-2]
 
-            if (statusCode in stat_dicts.keys()):
-                stat_dicts[statusCode] += 1
+                if (statusCode in stat_dicts.keys()):
+                    stat_dicts[statusCode] += 1
 
             if (counter % 10) == 0:
                 printStats(stat_dicts, totalFileSize)
+                counter = 0
 
 finally:
     printStats(stat_dicts, totalFileSize)
