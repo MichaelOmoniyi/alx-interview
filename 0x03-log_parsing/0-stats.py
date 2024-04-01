@@ -1,53 +1,54 @@
 #!/usr/bin/python3
+
 import sys
 
 
-def printStats(stat_dicts, file_size):
+def print_msg(dict_sc, total_file_size):
     """
-    This module prints the stats.
+    Method to print
     Args:
-        stat_dicts (dict): A dictionary containging the status codes
-        file_size (integer): The total file size calculated
+        dict_sc: dict of status codes
+        total_file_size: total of the file
     Returns:
         Nothing
     """
 
-    print("File size: {}".format(file_size))
-    for key, val in sorted(stat_dicts.items()):
+    print("File size: {}".format(total_file_size))
+    for key, val in sorted(dict_sc.items()):
         if val != 0:
             print("{}: {}".format(key, val))
 
 
-totalFileSize = 0
-statusCode = 0
+total_file_size = 0
+code = 0
 counter = 0
-stat_dicts = {"200": 0,
-              "301": 0,
-              "400": 0,
-              "401": 0,
-              "403": 0,
-              "404": 0,
-              "405": 0,
-              "500": 0}
+dict_sc = {"200": 0,
+           "301": 0,
+           "400": 0,
+           "401": 0,
+           "403": 0,
+           "404": 0,
+           "405": 0,
+           "500": 0}
 
 try:
     for line in sys.stdin:
-        parsedLine = line.split()
-        parsedLine = parsedLine[::-1]
+        parsed_line = line.split()  # ✄ trimming
+        parsed_line = parsed_line[::-1]  # inverting
 
-        if len(parsedLine) > 2:
+        if len(parsed_line) > 2:
             counter += 1
 
             if counter <= 10:
-                totalFileSize += int(parsedLine[0])
-                statusCode = parsedLine[1]
+                total_file_size += int(parsed_line[0])  # file size
+                code = parsed_line[1]  # status code
 
-                if (statusCode in stat_dicts.keys()):
-                    stat_dicts[statusCode] += 1
+                if (code in dict_sc.keys()):
+                    dict_sc[code] += 1
 
-            if counter == 10:
-                printStats(stat_dicts, totalFileSize)
+            if (counter == 10):
+                print_msg(dict_sc, total_file_size)
                 counter = 0
 
 finally:
-    printStats(stat_dicts, totalFileSize)
+    print_msg(dict_sc, total_file_size)
