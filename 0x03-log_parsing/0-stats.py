@@ -44,7 +44,7 @@ try:
                 if (statusCode in stat_dicts.keys()):
                     stat_dicts[statusCode] += 1
 
-            if (counter % 10) == 0:
+            if counter == 10:
                 printStats(stat_dicts, totalFileSize)
                 counter = 0
 
