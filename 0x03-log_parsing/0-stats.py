@@ -33,13 +33,14 @@ stat_dicts = {"200": 0,
 try:
     for line in sys.stdin:
         parsedLine = line.split()
+        parsedLine = parsedLine[::-1]
 
         if len(parsedLine) > 2:
             counter += 1
 
             if counter <= 10:
-                totalFileSize += int(parsedLine[-1])
-                statusCode = parsedLine[-2]
+                totalFileSize += int(parsedLine[0])
+                statusCode = parsedLine[1]
 
                 if (statusCode in stat_dicts.keys()):
                     stat_dicts[statusCode] += 1
