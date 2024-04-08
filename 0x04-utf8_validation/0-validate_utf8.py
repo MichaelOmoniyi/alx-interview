@@ -4,10 +4,11 @@
 
 def validUTF8(data):
     """
-    Method that determines if a given data set represents a valid UTF-8 encoding.
-    Args: 
+    Method that determines if a given data set represents a valid
+    UTF-8 encoding.
+    Args:
         data: A give data set
-    Return: 
+    Return:
         Ture if the data set is a valid UTF-8 encoding otherwise false
     """
     number_bytes = 0
@@ -28,7 +29,7 @@ def validUTF8(data):
                 return False
         else:
             if not (i & mask_1 and not (i & mask_2)):
-                    return False
+                return False
 
         number_bytes -= 1
     if number_bytes == 0:
