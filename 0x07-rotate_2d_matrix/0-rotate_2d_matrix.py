@@ -12,9 +12,9 @@ def rotate_2d_matrix(matrix):
 
     rotatedMatrix = []
 
-    for row in range(len(matrix)):
-        for col in range(row+1, len(matrix)):
-            matrix[row][col], matrix[col][row] = matrix[col][row], matrix[row][col]
+    for i in range(len(matrix)):
+        for j in range(i+1, len(matrix)):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
     for row in matrix:
         row.reverse()
