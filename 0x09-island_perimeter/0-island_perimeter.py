@@ -3,13 +3,14 @@
     Island Perimeter
 """
 
+
 def island_perimeter(grid):
     """
         Calculates the perimeter of the island described in grid
 
         Args:
             grid (list): a list of list of integers
-        
+
         Return:
             perimeter of the island described in grid
     """
